@@ -1,0 +1,231 @@
+######practical demo for git pull vs fetch###############
+
+anil@anil-Rev-1-0:~$ mkdir pullvsfetch
+anil@anil-Rev-1-0:~$ cd pullvsfetch/
+anil@anil-Rev-1-0:~/pullvsfetch$ mkdir dev1 dev2
+anil@anil-Rev-1-0:~/pullvsfetch$ ls -ltrh
+total 8.0K
+drwxr-xr-x 2 anil anil 4.0K Mar 20 13:59 dev2
+drwxr-xr-x 2 anil anil 4.0K Mar 20 13:59 dev1
+anil@anil-Rev-1-0:~/pullvsfetch$ cd dev1
+anil@anil-Rev-1-0:~/pullvsfetch/dev1$ git clone https://github.com/hareeshops/pullvsfetch.git
+Cloning into 'pullvsfetch'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+anil@anil-Rev-1-0:~/pullvsfetch/dev1$ cd pullvsfetch/
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ ls -ltrh
+total 4.0K
+-rw-r--r-- 1 anil anil 13 Mar 20 14:00 README.md
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ cat>Hello.java
+class Hello
+{
+
+public static void main(String ar[])
+{
+System.out.print("Hello");
+}
+}
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ ls -ltrh
+total 8.0K
+-rw-r--r-- 1 anil anil 13 Mar 20 14:00 README.md
+-rw-r--r-- 1 anil anil 85 Mar 20 14:04 Hello.java
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	Hello.java
+
+nothing added to commit but untracked files present (use "git add" to track)
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git add Hello.java 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   Hello.java
+
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git commit -m "first commit from:Dev1"
+[master 8bdb868] first commit from:Dev1
+ 1 file changed, 8 insertions(+)
+ create mode 100644 Hello.java
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git log
+commit 8bdb868e595b210bdca6770697b188b4d4115537 (HEAD -> master)
+Author: Hareesh <hareeshops@gmail.com>
+Date:   Wed Mar 20 14:06:06 2019 +0530
+
+    first commit from:Dev1
+
+commit d331a3cd3e02e56e698feb4a3a5c3872c22bbad0 (origin/master, origin/HEAD)
+Author: hareeshops <42886985+hareeshops@users.noreply.github.com>
+Date:   Wed Mar 20 13:57:28 2019 +0530
+
+    Initial commit
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git remote -v
+origin	https://github.com/hareeshops/pullvsfetch.git (fetch)
+origin	https://github.com/hareeshops/pullvsfetch.git (push)
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git push -u origin master 
+git: 'credential-manager' is not a git command. See 'git --help'.
+Username for 'https://github.com': hareeshops
+Password for 'https://hareeshops@github.com': 
+git: 'credential-manager' is not a git command. See 'git --help'.
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 358 bytes | 358.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/hareeshops/pullvsfetch.git
+   d331a3c..8bdb868  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ pwd
+/home/anil/pullvsfetch/dev1/pullvsfetch
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ pwd
+/home/anil/pullvsfetch/dev1/pullvsfetch
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ cd ../../dev2
+anil@anil-Rev-1-0:~/pullvsfetch/dev2$ pwd
+/home/anil/pullvsfetch/dev2
+anil@anil-Rev-1-0:~/pullvsfetch/dev2$ git clone https://github.com/hareeshops/pullvsfetch.git
+Cloning into 'pullvsfetch'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), done.
+anil@anil-Rev-1-0:~/pullvsfetch/dev2$ ls -ltrh
+total 4.0K
+drwxr-xr-x 3 anil anil 4.0K Mar 20 14:12 pullvsfetch
+anil@anil-Rev-1-0:~/pullvsfetch/dev2$ cd pullvsfetch/
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ ls -ltrh
+total 8.0K
+-rw-r--r-- 1 anil anil 13 Mar 20 14:12 README.md
+-rw-r--r-- 1 anil anil 85 Mar 20 14:12 Hello.java
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ pwd
+/home/anil/pullvsfetch/dev2/pullvsfetch
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ ls -ltrh
+total 8.0K
+-rw-r--r-- 1 anil anil 13 Mar 20 14:12 README.md
+-rw-r--r-- 1 anil anil 85 Mar 20 14:12 Hello.java
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ cat>hello.sh
+#!/bin/bash
+echo "Hello world"
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ 
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ ls -ltrh
+total 12K
+-rw-r--r-- 1 anil anil 13 Mar 20 14:12 README.md
+-rw-r--r-- 1 anil anil 85 Mar 20 14:12 Hello.java
+-rw-r--r-- 1 anil anil 31 Mar 20 14:13 hello.sh
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	hello.sh
+
+nothing added to commit but untracked files present (use "git add" to track)
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ git add hello.sh 
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   hello.sh
+
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ git commit -m "first commit from:Dev2"
+[master 4393314] first commit from:Dev2
+ 1 file changed, 2 insertions(+)
+ create mode 100644 hello.sh
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ git remote -v
+origin	https://github.com/hareeshops/pullvsfetch.git (fetch)
+origin	https://github.com/hareeshops/pullvsfetch.git (push)
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ git push -u origin master 
+git: 'credential-manager' is not a git command. See 'git --help'.
+Username for 'https://github.com': hareeshops
+Password for 'https://hareeshops@github.com': 
+git: 'credential-manager' is not a git command. See 'git --help'.
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 342 bytes | 342.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/hareeshops/pullvsfetch.git
+   8bdb868..4393314  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+anil@anil-Rev-1-0:~/pullvsfetch/dev2/pullvsfetch$ cd ../../dev1
+anil@anil-Rev-1-0:~/pullvsfetch/dev1$ ls -ltrh
+total 4.0K
+drwxr-xr-x 3 anil anil 4.0K Mar 20 14:03 pullvsfetch
+anil@anil-Rev-1-0:~/pullvsfetch/dev1$ cd pullvsfetch/
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ ls -ltrh
+total 8.0K
+-rw-r--r-- 1 anil anil 13 Mar 20 14:00 README.md
+-rw-r--r-- 1 anil anil 85 Mar 20 14:04 Hello.java
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git fetch
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/hareeshops/pullvsfetch
+   8bdb868..4393314  master     -> origin/master
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git log
+commit 8bdb868e595b210bdca6770697b188b4d4115537 (HEAD -> master)
+Author: Hareesh <hareeshops@gmail.com>
+Date:   Wed Mar 20 14:06:06 2019 +0530
+
+    first commit from:Dev1
+
+commit d331a3cd3e02e56e698feb4a3a5c3872c22bbad0
+Author: hareeshops <42886985+hareeshops@users.noreply.github.com>
+Date:   Wed Mar 20 13:57:28 2019 +0530
+
+    Initial commit
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git merge
+Updating 8bdb868..4393314
+Fast-forward
+ hello.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 hello.sh
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ git log
+commit 4393314631bda92e710c1a356244551a738a678e (HEAD -> master, origin/master, origin/HEAD)
+Author: Hareesh <hareeshops@gmail.com>
+Date:   Wed Mar 20 14:16:54 2019 +0530
+
+    first commit from:Dev2
+
+commit 8bdb868e595b210bdca6770697b188b4d4115537
+Author: Hareesh <hareeshops@gmail.com>
+Date:   Wed Mar 20 14:06:06 2019 +0530
+
+    first commit from:Dev1
+
+commit d331a3cd3e02e56e698feb4a3a5c3872c22bbad0
+Author: hareeshops <42886985+hareeshops@users.noreply.github.com>
+Date:   Wed Mar 20 13:57:28 2019 +0530
+
+    Initial commit
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ ls -ltrh
+total 12K
+-rw-r--r-- 1 anil anil 13 Mar 20 14:00 README.md
+-rw-r--r-- 1 anil anil 85 Mar 20 14:04 Hello.java
+-rw-r--r-- 1 anil anil 31 Mar 20 14:22 hello.sh
+anil@anil-Rev-1-0:~/pullvsfetch/dev1/pullvsfetch$ 
+
